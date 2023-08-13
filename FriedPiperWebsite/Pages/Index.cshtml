@@ -1,0 +1,487 @@
+﻿@page
+@using FriedPiper.Data.MenuItems;
+@using FriedPiper.Data;
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page - Fried Piper";
+}
+
+<div class="text-center">
+
+    <h1 class="display-4">Fried Piper</h1>
+
+    <p>The finest of fried delights!</p>
+
+</div>
+
+
+
+<form id="search-area">
+
+    
+    <h4>
+        <label>
+            <input type="checkbox" name="Checked" value="search" checked="@Model.Checked.Contains("search")"/>
+            <- Check To Search!
+        </label>
+        
+    </h4>
+
+
+    <div id="search">
+        <input type="text" name="SearchTerms" value="@Model.SearchTerms"/>
+        <input type="submit" value="Search">
+    </div>
+    
+
+
+
+
+    <br/>
+
+
+    <h4>Types:</h4>
+
+    <label>
+        <input type="checkbox" name="Checked"  value="TreatsChecked" checked="@Model.Checked.Contains("TreatsChecked")"/>
+        Treats
+    </label>
+
+    <label>
+        <input type="checkbox" name="Checked" value="PoppersChecked" checked="@Model.Checked.Contains("PoppersChecked")"/>
+        Poppers
+    </label>
+
+    <label>
+        <input type="checkbox" name="Checked" value="PlattersChecked" checked="@Model.Checked.Contains("PlattersChecked")"/>
+        Platters
+    </label>
+
+    <br/>
+    <br/>
+
+
+    <h4>Price Range:</h4>
+    <div>
+        Between $
+        <input name="PriceMin" type="number" min="0" max="100" step="0.01" placeholder="min" value="@Model.PriceMin"/>
+        and $
+        <input name="PriceMax" type="number" min="0" max="100" step="0.01" placeholder="max" value="@Model.PriceMax" />
+    </div>
+
+    <br/>
+
+    <h4>Calories Range:</h4>
+    <div>
+        Between
+        <input name="CaloriesMin" type="number" min="0" max="5000" step="1" placeholder="min" value="@Model.CaloriesMin"/>
+        and
+        <input name="CaloriesMax" type="number" min="0" max="5000" step="1" placeholder="max" value="@Model.CaloriesMax"/>
+    </div>
+
+    
+
+</form>
+
+
+
+
+
+<br/>
+<br/>
+<br/>
+
+
+<ul class="items-list">
+
+
+    @if (!@Model.Checked.Contains("search"))
+    {
+        
+        <h3 id="treats">THE TREATS:</h3>
+
+        <br/>
+
+        @foreach(IMenuItem item in Menu.Treats)
+        {
+               
+            <li>
+
+                <div class="menu-item">
+                    <h3 class="name">@item.Name</h3>
+                    <div class="price">Price: @item.Price</div>
+                    <div class="calories">Calories: @item.Calories</div>
+                </div>
+
+                
+            </li>
+
+        }
+
+        <br/>
+        <br/>
+
+
+    }
+    else if(@Model.Checked.Contains("TreatsChecked"))
+    {
+        
+        <h3 id="treats">THE TREATS:</h3>
+
+        <br/>
+
+        @foreach(IMenuItem item in Menu.Treats)
+        {
+
+            if(Model.SearchTerms == null)
+            {
+                
+                if(item.Price <= Model.PriceMax && item.Price >= Model.PriceMin && item.Calories <= Model.CaloriesMax && item.Calories >= Model.CaloriesMin)
+                {
+
+                    <li>
+
+                        <div class="menu-item">
+                            <h3 class="name">@item.Name</h3>
+                            <div class="price">Price: @item.Price</div>
+                            <div class="calories">Calories: @item.Calories</div>
+                        </div>
+
+                
+                    </li>
+
+                }
+
+            }
+            else
+            {
+                for (int i = 0; i < Model.EachWord.Count(); i++)
+                {
+
+                    if (item.Name.Contains(Model.EachWord[i], StringComparison.CurrentCultureIgnoreCase)
+                        && item.Price <= Model.PriceMax && item.Price >= Model.PriceMin && item.Calories <= Model.CaloriesMax && item.Calories >= Model.CaloriesMin)
+                    {
+
+                        <li>
+
+                            <div class="menu-item">
+                                <h3 class="name">@item.Name</h3>
+                                <div class="price">Price: @item.Price</div>
+                                <div class="calories">Calories: @item.Calories</div>
+                            </div>
+
+
+                        </li>
+
+                        break;
+
+                    }
+
+                    
+
+                }
+
+            }
+
+
+
+
+        }
+
+
+
+        <br/>
+        <br/>
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    @if (!@Model.Checked.Contains("search"))
+    {
+
+        <h3 id="poppers">THE POPPERS:</h3>
+
+        <br/>
+
+
+        @foreach (Popper item in Menu.Poppers)
+        {
+
+            <li>
+                <div class="menu-item">
+                    <h3 class="name">@item.Name</h3>
+                    <div class="price">Price: @item.Price</div>
+                    <div class="calories">Calories: @item.Calories</div>
+                    <div class="glazed">Glazed: @item.Glazed</div>
+                </div>
+
+            </li>
+
+        }
+
+
+        <br/>
+        <br/>
+
+
+
+    }
+    else if(@Model.Checked.Contains("PoppersChecked"))
+    {
+        
+        <h3 id="treats">THE POPPERS:</h3>
+
+        <br/>
+
+        @foreach(Popper item in Menu.Poppers)
+        {
+
+            if(Model.SearchTerms == null)
+            {
+                
+                if(item.Price <= Model.PriceMax && item.Price >= Model.PriceMin && item.Calories <= Model.CaloriesMax && item.Calories >= Model.CaloriesMin)
+                {
+
+                    <li>
+
+                        <div class="menu-item">
+                            <h3 class="name">@item.Name</h3>
+                            <div class="price">Price: @item.Price</div>
+                            <div class="calories">Calories: @item.Calories</div>
+                            <div class="glazed">Glazed: @item.Glazed</div>
+                        </div>
+
+                
+                    </li>
+
+                }
+
+            }
+            else
+            {
+
+                for (int i = 0; i < Model.EachWord.Count(); i++)
+                {
+
+
+                    if (item.Name.Contains(Model.EachWord[i], StringComparison.CurrentCultureIgnoreCase)
+                        && item.Price <= Model.PriceMax && item.Price >= Model.PriceMin && item.Calories <= Model.CaloriesMax && item.Calories >= Model.CaloriesMin)
+                    {
+
+                        <li>
+
+                            <div class="menu-item">
+                                <h3 class="name">@item.Name</h3>
+                                <div class="price">Price: @item.Price</div>
+                                <div class="calories">Calories: @item.Calories</div>
+                                <div class="glazed">Glazed: @item.Glazed</div>
+                            </div>
+
+
+                        </li>
+
+                        break;
+
+
+                    }
+                }
+
+            }
+
+
+
+
+        }
+
+
+
+        <br/>
+        <br/>
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @if (!@Model.Checked.Contains("search"))
+    {
+        <h3 id="platters">THE PLATTERS:</h3>
+
+        <br/>
+
+
+        @foreach (IMenuItem item in Menu.Platters)
+        {
+
+            if (item is PopperPlatter pop)
+            {
+                <li>
+                    <div class="menu-item">
+                        <h3 class="name">@pop.Name</h3>
+                        <div class="price">Price: @pop.Price</div>
+                        <div class="calories">Calories: @pop.Calories</div>
+                        <div class="glazed">Glazed: @pop.Glazed</div>
+                    </div>
+
+                </li>
+            }
+            else if (item is PiperPlatter pip)
+            {
+                <li>
+                    <div class="menu-item">
+                        <h3 class="name">@pip.Name</h3>
+                        <div class="price">Price: @pip.Price</div>
+                        <div class="calories">Calories: @pip.Calories</div>
+                        <div class="left-ice-cream">Left Ice Cream: @pip.LeftIceCream</div>
+                        <div class="right-ice-cream">Right Ice Cream: @pip.RightIceCream</div>
+                        <div class="left-pie">Left Pie: @pip.LeftPie</div>
+                        <div class="right-pie">Right Pie: @pip.RightPie</div>
+                    </div>
+
+                </li>
+            }
+
+
+        }
+
+    }
+    else if (@Model.Checked.Contains("PlattersChecked"))
+    {
+
+        <h3 id="platters">THE PLATTERS:</h3>
+
+        <br/>
+
+
+        @foreach (IMenuItem item in Menu.Platters)
+        {
+
+            if (Model.SearchTerms == null)
+            {
+                if (item.Price <= Model.PriceMax && item.Price >= Model.PriceMin && item.Calories <= Model.CaloriesMax && item.Calories >= Model.CaloriesMin)
+                {
+
+                    if (item is PopperPlatter pop)
+                    {
+                        <li>
+                            <div class="menu-item">
+                                <h3 class="name">@pop.Name</h3>
+                                <div class="price">Price: @pop.Price</div>
+                                <div class="calories">Calories: @pop.Calories</div>
+                                <div class="glazed">Glazed: @pop.Glazed</div>
+                            </div>
+
+                        </li>
+                    }
+                    else if (item is PiperPlatter pip)
+                    {
+                        <li>
+                            <div class="menu-item">
+                                <h3 class="name">@pip.Name</h3>
+                                <div class="price">Price: @pip.Price</div>
+                                <div class="calories">Calories: @pip.Calories</div>
+                                <div class="left-ice-cream">Left Ice Cream: @pip.LeftIceCream</div>
+                                <div class="right-ice-cream">Right Ice Cream: @pip.RightIceCream</div>
+                                <div class="left-pie">Left Pie: @pip.LeftPie</div>
+                                <div class="right-pie">Right Pie: @pip.RightPie</div>
+                            </div>
+
+                        </li>
+                    }
+                }
+            }
+            else
+            {
+
+                for (int i = 0; i < Model.EachWord.Count(); i++)
+                {
+
+
+                    if (item.Name.Contains(Model.EachWord[i], StringComparison.CurrentCultureIgnoreCase)
+                        && item.Price <= Model.PriceMax && item.Price >= Model.PriceMin && item.Calories <= Model.CaloriesMax && item.Calories >= Model.CaloriesMin)
+                    {
+
+                        if (item is PopperPlatter pop)
+                        {
+                            <li>
+                                <div class="menu-item">
+                                    <h3 class="name">@pop.Name</h3>
+                                    <div class="price">Price: @pop.Price</div>
+                                    <div class="calories">Calories: @pop.Calories</div>
+                                    <div class="glazed">Glazed: @pop.Glazed</div>
+                                </div>
+
+                            </li>
+                        }
+                        else if (item is PiperPlatter pip)
+                        {
+                            <li>
+                                <div class="menu-item">
+                                    <h3 class="name">@pip.Name</h3>
+                                    <div class="price">Price: @pip.Price</div>
+                                    <div class="calories">Calories: @pip.Calories</div>
+                                    <div class="left-ice-cream">Left Ice Cream: @pip.LeftIceCream</div>
+                                    <div class="right-ice-cream">Right Ice Cream: @pip.RightIceCream</div>
+                                    <div class="left-pie">Left Pie: @pip.LeftPie</div>
+                                    <div class="right-pie">Right Pie: @pip.RightPie</div>
+                                </div>
+
+                            </li>
+                        }
+
+
+                        break;
+
+
+
+                    }
+
+                }
+
+
+            
+            }
+        }
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+</ul>

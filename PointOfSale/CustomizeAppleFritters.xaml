@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="FriedPiper.PointOfSale.CustomizeAppleFritters"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FriedPiper.Data.Enums;assembly=FriedPiper.Data"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        d:DesignHeight="400" d:DesignWidth="700">
+
+
+    
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="size" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="local:ServingSize"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+
+
+
+
+    <Grid>
+        <TextBlock TextAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Top" Height="40" Width="350" FontSize="30">
+            Customize Apple Fritter
+        </TextBlock>
+
+        <TextBlock TextAlignment="Center" Margin="-350,70,0,0" VerticalAlignment="Top" Height="40" Width="300" FontSize="30">
+            Choose Size
+        </TextBlock>
+
+
+
+        <ComboBox Margin="0,110,0,0" Height="40" Width="250" ItemsSource="{Binding Source={StaticResource size}}" SelectedItem="{Binding Path=Size}">
+
+            
+
+        </ComboBox>
+
+
+
+
+        <!--
+        
+        <ComboBoxItem Name="Medium" Content="Medium" />
+        ItemsSource="{Binding Source={StaticResource size}}"
+        
+        
+        <ComboBox Name="comboBoxSize" Margin="0,110,0,0" Height="40" Width="250" >
+
+            <ComboBoxItem Name="Small" Content="Small" IsSelected="{Binding Path=Size}"/>
+            <ComboBoxItem Name="Medium" Content="Medium" IsSelected="{Binding Path=Size}"/>
+            <ComboBoxItem Name="Large" Content="Large" IsSelected="{Binding Path=Size}"/>
+
+        </ComboBox>
+
+        -->
+
+
+        <TextBlock TextAlignment="Center" Margin="350,70,0,0" VerticalAlignment="Top" Height="40" Width="300" FontSize="30">
+            Is It Glazed?
+        </TextBlock>
+
+
+        <CheckBox Margin="0,0,-300,100" Height="25" Width="25" IsChecked="{Binding Path=Glazed}"/>
+
+
+
+    </Grid>
+</UserControl>

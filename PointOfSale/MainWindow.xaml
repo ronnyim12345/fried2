@@ -1,0 +1,35 @@
+﻿<Window x:Class="FriedPiper.PointOfSale.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FriedPiper.PointOfSale"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="720" Width="1080">
+    <Grid>
+
+        <Grid ButtonBase.Click="EnableSelectMoreItemsButton" Name="menuItemSelectionGrid" Margin="-200,-150,0,0" Height="400" Width="700">
+
+            <local:MenuItemSelectionControl x:Name="menuItemSelection"/>
+            
+        </Grid>
+
+
+        <Grid ButtonBase.Click="CustomizeButtonClick"  Name="orderSummaryControlGrid" Margin="800,0,0,0" Height="550" Width="200">
+            <local:OrderSummaryControl x:Name="orderSummaryControl" />
+        </Grid>
+
+        
+        <TextBlock Margin="0,-625,0,0" Height="50" Width="350" FontWeight="Bold" FontSize="30">
+            Fried Piper Point of Sale
+        </TextBlock>
+
+
+
+        <Button Click="CancelOrder" Content="Cancel Order" HorizontalAlignment="Left" Margin="20,536,0,0" VerticalAlignment="Top" Height="80" Width="200" FontSize="30"/>
+        <Button IsEnabled="false" Click="SelectMoreItems" Name="selectMoreItems" Content="Select More Items" HorizontalAlignment="Left" Margin="250,536,0,0" VerticalAlignment="Top" Height="80" Width="250" FontSize="30"/>
+        <Button Click="CompleteOrder" Content="Complete Order" HorizontalAlignment="Left" Margin="520,536,0,0" VerticalAlignment="Top" Height="80" Width="250" FontSize="30"/>
+
+
+    </Grid>
+</Window>

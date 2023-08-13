@@ -1,0 +1,191 @@
+﻿<UserControl x:Class="FriedPiper.PointOfSale.CustomizePiperPlatter"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FriedPiper.Data.Enums;assembly=FriedPiper.Data"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        DataContextChanged="UserControl_DataContextChanged"
+        mc:Ignorable="d"
+        d:DesignHeight="400" d:DesignWidth="700">
+
+
+
+
+
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="pieFilling" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="local:PieFilling"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+   
+
+
+
+
+        <ObjectDataProvider x:Key="iceCream" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="local:IceCreamFlavor"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+
+
+
+
+
+
+
+    <Grid>
+
+        <TextBlock TextAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Top" Height="40" Width="400" FontSize="30">
+            Customize Piper Platter
+        </TextBlock>
+
+
+        <Grid Margin="0,100,0,0" Height="300" Width="700">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+
+            <TextBlock Grid.Column ="0" TextAlignment="Center" VerticalAlignment="Top" Height="40" Width="150" FontSize="20">
+            Choose Left Pie
+            </TextBlock>
+
+
+
+
+
+            <ComboBox Name="comboBoxLeftPie" Margin="10,110,0,100" Height="40" Width="100" ItemsSource="{Binding Source={StaticResource pieFilling}}" SelectedItem="{Binding Path=Flavor}">
+
+
+
+            </ComboBox>
+
+
+
+<!--
+
+
+            <ComboBox Name="comboBoxLeftPie" Margin="10,110,0,100" Height="40" Width="100" >
+
+                <ComboBoxItem Content="Cherry" IsSelected="{Binding Path=Flavor}"/>
+                <ComboBoxItem Content="Apricot" IsSelected="{Binding Path=Flavor}"/>
+                <ComboBoxItem Content="Peach" IsSelected="{Binding Path=Flavor}"/>
+                <ComboBoxItem Content="Pineapple" IsSelected="{Binding Path=Flavor}"/>
+                <ComboBoxItem Content="Blueberry" IsSelected="{Binding Path=Flavor}"/>
+                <ComboBoxItem Content="Apple" IsSelected="{Binding Path=Flavor}"/>
+                <ComboBoxItem Content="Pecan" IsSelected="{Binding Path=Flavor}"/>
+
+
+            </ComboBox>
+
+-->
+
+
+            <TextBlock Grid.Column ="1" TextAlignment="Center" VerticalAlignment="Top" Height="40" Width="150" FontSize="20">
+            Choose Right Pie
+            </TextBlock>
+
+
+
+
+
+
+
+            <ComboBox Grid.Column ="1" Name="comboBoxRightPie" Margin="10,110,0,100" Height="40" Width="100" ItemsSource="{Binding Source={StaticResource pieFilling}}" SelectedItem="{Binding Path=Flavor}">
+
+
+            </ComboBox>
+
+
+
+
+
+
+
+
+            <TextBlock Grid.Column ="2" TextAlignment="Center" VerticalAlignment="Top" Height="40" Width="170" FontSize="17">
+            Choose Left Ice Cream
+            </TextBlock>
+
+
+
+
+
+
+
+            <ComboBox Grid.Column ="2" Name="comboBoxLeftIceCream" Margin="10,110,0,100" Height="40" Width="100" ItemsSource="{Binding Source={StaticResource iceCream}}" SelectedItem="{Binding Path=Flavor}" >
+
+
+            </ComboBox>
+
+
+
+
+
+
+
+
+
+
+
+            <TextBlock Grid.Column ="3" TextAlignment="Center" VerticalAlignment="Top" Height="40" Width="170" FontSize="15">
+            Choose Right Ice Cream
+            </TextBlock>
+
+
+
+
+
+
+
+            <ComboBox Grid.Column ="3" Name="comboBoxRightIceCream" Margin="10,110,0,100" Height="40" Width="100"  ItemsSource="{Binding Source={StaticResource iceCream}}" SelectedItem="{Binding Path=Flavor}">
+
+
+            </ComboBox>
+
+
+
+
+
+
+
+
+
+        </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </Grid>
+</UserControl>

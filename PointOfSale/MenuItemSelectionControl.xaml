@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="FriedPiper.PointOfSale.MenuItemSelectionControl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:local="clr-namespace:FriedPiper.PointOfSale"
+        mc:Ignorable="d"
+        d:DesignHeight="400" d:DesignWidth="700">
+    <Grid>
+        
+        
+
+        <TextBlock TextAlignment="Center" Margin="40,10,522,0" VerticalAlignment="Top" Height="40" Width="138" FontSize="30">
+            Treats
+        </TextBlock>
+
+
+        
+        
+        
+        <Button Click="FriedPie_Click" Name="FriedPie" Content="Fried Pie" HorizontalAlignment="Left" Margin="40,70,0,0" VerticalAlignment="Top" Height="40" Width="138" FontSize="30"/>
+        <Button Click="FriedIceCream_Click" Name="FriedIceCream" Content="Fried Ice Cream" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" Height="40" Width="220" FontSize="30"/>
+        <Button Click="FriedCandyBar_Click" Name="FriedCandyBar" Content="Fried Candy Bar" HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top" Height="40" Width="220" FontSize="30"/>
+        <Button Click="FriedTwinkies_Click" Name="FriedTwinkies" Content="Fried Twinkies" HorizontalAlignment="Left" Margin="15,310,0,0" VerticalAlignment="Top" Height="40" Width="200" FontSize="30"/>
+
+
+
+
+
+        <TextBlock TextAlignment="Center" Margin="270,10,300,0" VerticalAlignment="Top" Height="40" Width="138" FontSize="30">
+            Poppers
+        </TextBlock>
+
+
+
+
+        <Button Click="AppleFritters_Click" Name="AppleFritters" Content="Apple Fritters" HorizontalAlignment="Left" Margin="250,70,0,0" VerticalAlignment="Top" Height="40" Width="200" FontSize="30"/>
+        <Button Click="FriedBananas_Click"  Name="FriedBananas" Content="Fried Bananas" HorizontalAlignment="Left" Margin="250,150,0,0" VerticalAlignment="Top" Height="40" Width="200" FontSize="30"/>
+        <Button Click="FriedCheesecake_Click" Name="FriedCheesecake" Content="Fried Cheesecake" HorizontalAlignment="Left" Margin="240,230,0,0" VerticalAlignment="Top" Height="40" Width="250" FontSize="30"/>
+        <Button Click="FriedOreos_Click" Name="FriedOreos" Content="Fried Oreos" HorizontalAlignment="Left" Margin="250,310,0,0" VerticalAlignment="Top" Height="40" Width="175" FontSize="30"/>
+
+
+
+
+
+        <TextBlock TextAlignment="Center" Margin="450,10,0,0" VerticalAlignment="Top" Height="40" Width="200" FontSize="30">
+            Platters
+        </TextBlock>
+
+
+        
+        
+        
+        <Button Click="PiperPlatter_Click" Name="PiperPlatter" Content="Piper Platter" HorizontalAlignment="Left" Margin="475,70,0,0" VerticalAlignment="Top" Height="40" Width="200" FontSize="30"/>
+        <Button Click="PopperPlatter_Click" Name="PopperPlatter" Content="Popper Platter" HorizontalAlignment="Left" Margin="475,150,0,0" VerticalAlignment="Top" Height="40" Width="200" FontSize="30"/>
+
+
+
+
+    </Grid>
+</UserControl>
